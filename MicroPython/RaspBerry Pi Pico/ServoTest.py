@@ -1,18 +1,31 @@
+# Programa para mover un servomotor 180° 
+'''Se realiza la conexión del servomotor a la tarjeta, a una alimentación de 
+5 voltios cable rojo, tierra cable negro y la señal del potenciometro PWM al pin 21'''
+
+'''La primera linea Importa la señal del pin de la 
+tarjeta ESP 32 y la señal del PWM 
+que realiza el movimiento del servo, la segunda linea 
+importa el tiempo en milisegundos que se mueve el servo'''
+
+#Modulos
 from machine import Pin, PWM
-import utime
+from utime import sleep, sleep_ms
 
-servo = PWM(Pin(0))  # Define el pin GPIO0 como salida PWM
-servo.freq(50)  # Configura la frecuencia PWM a 50Hz (estándar para servos)
+'''Declaro el sensor, indicando que se encuentra en el
+pin 18 de la tarjeta ESP32 y funciona a una frecuencia de 50Hz que equivalen
+a 20ms de acuerdo con el fabricante'''
 
-def set_angle(angle):
-    # Mapea el ángulo (0-180) al ciclo de trabajo del PWM (1000-9000)
-    duty = int(1000 + (angle/180)*8000)
-    servo.duty_u16(duty)
+#Objeto
+servo=PWM (Pin(15), freq=50)
 
+'''Ciclo mientras afirmativo, realiza la operación de que mientras
+el servo transcurre en el ciclo 1 genere un recorrido de acuerdo con la
+resolución en un rango de 1800 a 8000'''
+''' El servo realiza un recorrido en el ciclo de trabajo en un tiempo de 1 ms '''
 while True:
-    set_angle(0)    # Gira el servo a 0 grados
-    utime.sleep(1)  # Espera 1 segundo
-    set_angle(90)   # Gira el servo a 90 grados
-    utime.sleep(1)  # Espera 1 segundo
-    set_angle(180)  # Gira el servo a 180 grados
-    utime.sleep(1)  # Espera 1 segundo
+     for i in range(1800, 8000):
+        print(i)
+        servo.duty_u16(i)
+        sleep_ms(1)
+
+'''Cierre de la programación'''
