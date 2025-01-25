@@ -13,7 +13,20 @@ mpu.wake()
 
 # continuously print the data
 while True:
+
     gyro = mpu.read_gyro_data()
+    
     accel = mpu.read_accel_data()
-    print("Gyro: " + str(gyro) + ", Accel: " + str(accel))
-    time.sleep(0.1)
+
+
+    x = gyro[0]
+    y = gyro[1]
+    z = gyro[2]
+
+    print("Gyro x: ", y)
+    print("Gyro y: ", z)
+    print("Gyro z: ", x)
+    print("-----------------")
+
+
+    time.sleep(0.5)
