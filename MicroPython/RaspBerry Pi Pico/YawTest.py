@@ -15,7 +15,6 @@ while True:
   # Calcula el tiempo transcurrido
   tiempo_actual = time.ticks_ms()
   dt = (tiempo_actual - tiempo_anterior) / 1000  # Convierte a segundos
-
   # Integra la velocidad angular en el eje z (yaw)
   yaw += gyro_data[0] * dt 
 

@@ -2,7 +2,7 @@ from machine import Pin, PWM
 import time
 
 # Configura el pin GPIO0 como salida PWM
-servo = PWM(Pin(12, mode=Pin.OUT))
+servo = PWM(Pin(15, mode=Pin.OUT))
 servo.freq(50)  # Configura la frecuencia a 50Hz (estándar para servos)
 
 while True:
@@ -17,4 +17,3 @@ while True:
     time.sleep_ms(500)
     servo.duty_ns(1500000)  # 1.5ms
     print("270")
-    time.sleep_ms(500)
