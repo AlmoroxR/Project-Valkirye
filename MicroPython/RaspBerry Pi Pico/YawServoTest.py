@@ -54,7 +54,7 @@ while True:
   # Actualiza el tiempo anterior
   tiempo_anterior = tiempo_actual
   
-  angulo_servoz = map_angle(yaw) 
+  angulo_servoz = map_angle(roll) 
   servoz.duty_u16(angulo_servoz) 
   
   angulo_servoy = map_angle(pitch)
